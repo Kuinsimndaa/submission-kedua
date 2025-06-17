@@ -1,0 +1,2 @@
+// This file ensures that the icons folder is copied to the dist folder during build.
+// Place all static assets (icons, screenshots, etc) here for Vite/public folder compatibility.
