@@ -55,6 +55,8 @@ export default defineConfig({
         ]
       },
       workbox: {
+        navigateFallback: '/index.html',
+        globPatterns: ['**/*.{js,css,html,png,svg,ico,json,webmanifest}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/story-api\.dicoding\.dev\/v1\/stories/,

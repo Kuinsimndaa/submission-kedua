@@ -5,7 +5,7 @@ import { saveStory } from './utils/idb.js';
 
 const VAPID_PUBLIC_KEY = 'BCCs2eonMI-6H2ctvFaWg-UYdDv387Vno_bzUzALpB442r2lCnsHmtrx8biyPi_E-1fSGABK_Qs_GlvPoJJqxbk'; // Ganti dengan VAPID key dari API Story
 
-async function subscribePushNotification() {
+async function subscribePushNotification(token) {
   if (!('serviceWorker' in navigator)) {
     alert('Service Worker tidak didukung di browser ini.');
     return;
@@ -18,18 +18,24 @@ async function subscribePushNotification() {
         userVisibleOnly: true,
         applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
       });
-      // Kirim subscription ke server lokal push notification
-      await fetch('http://localhost:3000/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(subscription)
-      });
-      alert('Push notification diaktifkan!');
     } catch (err) {
       alert('Gagal subscribe push notification: ' + err.message);
+      return;
     }
-  } else {
-    alert('Push notification sudah aktif.');
+  }
+  // Kirim subscription ke API Dicoding
+  try {
+    await fetch('https://story-api.dicoding.dev/v1/notifications/subscribe', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(subscription)
+    });
+    alert('Push notification berhasil diaktifkan!');
+  } catch (err) {
+    alert('Gagal mengirim subscription ke API Dicoding: ' + err.message);
   }
 }
 
@@ -48,7 +54,15 @@ window.addEventListener('DOMContentLoaded', () => {
   initRouter();
   const btn = document.getElementById('enable-push');
   if (btn) {
-    btn.onclick = subscribePushNotification;
+    // Pastikan Anda sudah mendapatkan token login sebelum memanggil subscribePushNotification
+    btn.onclick = () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('Silakan login terlebih dahulu untuk mengaktifkan push notification.');
+        return;
+      }
+      subscribePushNotification(token);
+    };
   }
 });
 
