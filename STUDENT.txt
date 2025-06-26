@@ -7,7 +7,7 @@
 // Jika hanya menggunakan OpenStreetMap, baris ini bisa diabaikan.
 
 Nama: Kuinsi
-URL Deploy: https://berbagiceritaappbykuins.netlify.app/
-URL Deploy Alternatif: https://berbagiceritapp.netlify.app/
+URL Deploy: https://berbagiceritapt.netlify.app/#/stories
+URL Deploy Alternatif: https://berbagiceritapt.netlify.app/
 Platform Deploy: Netlify
 Catatan: Aplikasi sudah memenuhi seluruh kriteria submission kedua (SPA, API, tambah data, aksesibilitas, transisi, push notification, PWA, IndexedDB, shortcut, screenshot, halaman Not Found, Workbox).
