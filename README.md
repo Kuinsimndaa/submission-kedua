@@ -1,4 +1,4 @@
-# Proyek Awal Interm: Aplikasi Berbagi Cerita
+# Proyek Kedua Interm: Aplikasi Berbagi Cerita
 
 Aplikasi web Single-Page Application (SPA) untuk berbagi cerita, menampilkan daftar cerita dari Story API, menambah cerita baru, dan menampilkan lokasi pada peta digital.
 
