@@ -81,6 +81,18 @@ function urlBase64ToUint8Array(base64String) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  // Skip to content fix for SPA
+  const mainContent = document.querySelector('#main-content');
+  const skipLink = document.querySelector('.skip-link');
+  if (mainContent && skipLink) {
+    skipLink.addEventListener('click', function (event) {
+      event.preventDefault();
+      skipLink.blur();
+      mainContent.focus();
+      mainContent.scrollIntoView();
+    });
+  }
+
   initRouter();
   // Login/Register/Logout button logic
   const nav = document.querySelector('nav ul');

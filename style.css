@@ -52,23 +52,20 @@ nav a:focus, nav a:hover {
   color: #222;
 }
 .skip-link {
-  position: absolute;
-  left: -999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+  position: static;
+  left: unset;
+  top: unset;
+  width: auto;
+  height: auto;
+  overflow: visible;
   z-index: 100;
   background: #fff;
   color: #222;
   padding: 0.5rem 1rem;
   border-radius: 4px;
+  display: none;
 }
 .skip-link:focus {
-  left: 1rem;
-  top: 1rem;
-  width: auto;
-  height: auto;
   outline: 2px solid #a7c7e7;
 }
 main {
