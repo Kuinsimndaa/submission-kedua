@@ -5,6 +5,9 @@ export default defineConfig({
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
+      strategies: 'injectManifest',
+      srcDir: 'public',
+      filename: 'sw-push.js',
       workbox: {
         globPatterns: ['**/*.{js,css,html,png,svg,ico,json,webp,jpg,woff2}'],
         navigateFallback: '/index.html',

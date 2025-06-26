@@ -14,7 +14,8 @@
   "description": "",
   "dependencies": {
     "leaflet": "^1.9.4",
-    "web-push": "^3.6.7"
+    "web-push": "^3.6.7",
+    "workbox-precaching": "^7.3.0"
   },
   "devDependencies": {
     "vite": "^6.3.5",

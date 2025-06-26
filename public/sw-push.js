@@ -1,12 +1,15 @@
+import { precacheAndRoute } from "workbox-precaching";
+precacheAndRoute(self.__WB_MANIFEST);
+
 // Service Worker untuk push notification
 self.addEventListener('push', function(event) {
   const data = event.data ? event.data.json() : {};
   const title = data.title || 'Notifikasi Baru!';
   const options = {
-    body: data.body || 'Ada update baru di aplikasi Berbagi Cerita.',
+    body: (data.options && data.options.body) || data.body || 'Ada update baru di aplikasi Berbagi Cerita.',
     icon: '/icons/icon-192.png',
     badge: '/icons/icon-192.png',
-    data: data.url || '/' // bisa diarahkan ke halaman tertentu
+    data: (data.options && data.options.url) || data.url || '/' // bisa diarahkan ke halaman tertentu
   };
   event.waitUntil(
     self.registration.showNotification(title, options)
